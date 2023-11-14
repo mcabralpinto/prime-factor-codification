@@ -30,7 +30,7 @@ Converting 342 into PFWS:
 
 ### Encoding Letters
 
-1. Identify its PFWS number (letters a-z correspond to decimal numbers 1-26);
+1. Identify its PFWS number (letters a - z correspond to decimal numbers 1 - 26);
 2. If it has less than four digits, pad it with 0s until the slot for the fourth prime number (7) is filled.
 
 ```
@@ -57,7 +57,7 @@ letters : Dict[str, str] = {"a": "0'0'0'0", "b": "0'0'0'1", "c": "0'0'1'0", "d":
 
 1. PFWS letters, numbers and symbols are connected by single prime characters. If a letter is following a non-letter character or if a number is following a letter, it should include an extra single prime to avoid ambiguity between letters and numbers.
 2. In the same way numbers can be simplified, groups of *n* consecutive 0s formed by letters should be replaced with *n* in PFWS enclosed by square brackets `[ ... ]`.
-3. Whitespace " " is awarded a special character `[]` in the PFWS system, as a symbolic representation of an empty character.
+3. Whitespace is awarded a special character `[]` in the PFWS system, as a symbolic representation of an empty character.
 4. Every other character has the same representation as they would in the regular writing system.
 
 ```
