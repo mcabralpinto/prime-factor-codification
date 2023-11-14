@@ -11,10 +11,10 @@ The essence of PFWS is that each alphanumerical character (digit or letter) is t
     1. Decompose the number in prime factors;
     2. Count how many times every existing prime factor up until the highest appears in the decomposition;
     3. Sort the counts (highest factor -> lowest factor) and separate them with a single prime character `'`.
-    4. For every group of *n* consecutive 0s, replace it with *n* in PFWS enclosed by parenthesis.
+    4. For every group of *n* consecutive 0s, replace it with *n* in PFWS enclosed by parenthesis `( ... )`.
 
 ```
-Turning 342 into PFWS:
+Converting 342 into PFWS:
 
 1. 342 = 19 * 3 * 3 * 2
 2. 19 appears one time. 17 appears zero times. 13 appears zero times. 11 appears zero times.
@@ -26,7 +26,7 @@ Turning 342 into PFWS:
 ```
 > **Note**: The single prime character separation is a way to avoid ambiguity. Without it, the number 10, coded in PFWS, could be interpreted as 3¹ * 2⁰ = 3 or 2¹⁰ = 1024!
 
-> **Note 2**: 0 was a tricky number to represent! "()" was the representation I wound up going with, not only because it looks like a 0, but also because the parenthesis represent a sequence of 0s.
+> **Note 2**: 0 was a tricky number to represent! `()` was the representation I wound up going with, not only because it looks like a 0, but also because the parenthesis represent a sequence of 0s.
 
 - **Codifying Letters:**
 
@@ -34,7 +34,7 @@ Turning 342 into PFWS:
     2. If it has less than four digits, pad it with 0s until the slot for the fourth prime number (7) is filled.
 
 ```
-Turning "g" into PFWS:
+Converting "g" into PFWS:
 
 1. g is the seventh letter in the alphabet. 7 is the fourth prime number, and as such its PFWS number is 1'0'0'0 -> 1'(1'0).
 2. 1'(1'0) has three digits, therefore it should be padded once: 0'1'(1'0).
@@ -56,12 +56,12 @@ letters : Dict[str, str] = {"a": "0'0'0'0", "b": "0'0'0'1", "c": "0'0'1'0", "d":
 - **Codifying Expressions:**
 
     1. PFWS letters, numbers and symbols are connected by single prime characters. If a letter is following a non-letter character or if a number is following a letter, it should include an extra single prime to avoid ambiguity between letters and numbers.
-    2. In the same way numbers can be simplified, groups of *n* consecutive 0s formed by letters should be replaced with *n* in PFWS enclosed by square brackets.
-    3. Whitespace " " is awarded a special character "[]" in the PFWS system, as a symbolic representation of an empty character.
+    2. In the same way numbers can be simplified, groups of *n* consecutive 0s formed by letters should be replaced with *n* in PFWS enclosed by square brackets `[ ... ]`.
+    3. Whitespace " " is awarded a special character `[]` in the PFWS system, as a symbolic representation of an empty character.
     4. Every other character has the same representation as they would in the regular writing system.
 
 ```
-Turning "pf20 ws23" into PFWS:
+Converting "pf20 ws23" into PFWS:
 
 ---SYMBOL CONVERSION---
 "p" -> 0'0'0'4
@@ -72,11 +72,12 @@ Turning "pf20 ws23" into PFWS:
 "s" -> 1'(1'(1'0))
 "23" -> 1'(3)
 
-"pf20 ws23" in PFWS is '0'0'0'4'0'0'1'1''1'0'2'[]''0'0'1'(3)'1'(1'(1'0))''1'(3) (rules 1 and 2)
+"pf20 ws23" in PFWS is '0'0'0'4'0'0'1'1''1'0'2'[]''0'0'1'(3)'1'(1'(1'0))''1'(3)   (rule 1)
+                    -> '[1'0]'4'[1]'1'1''1'0'2'[]''[1]'1'(3)'1'(1'(1'0))''1'(3)   (rule 2)
 ```
 
 ```
-Turning "2 + 2 = 4" into PFWS:
+Converting "2 + 2 = 4" into PFWS:
 
 ---SYMBOL CONVERSION---
 "2" -> 1
@@ -85,7 +86,7 @@ Turning "2 + 2 = 4" into PFWS:
 "=" -> = (rule 4)
 "4" -> 2
 
-"2 + 2 = 4" in PFWS is 1'[]'+'[]'1'[]'='[]'2 (rule 1)
+"2 + 2 = 4" in PFWS is 1'[]'+'[]'1'[]'='[]'2   (rule 1)
 ```
 
   (To be continued)
