@@ -89,6 +89,10 @@ Converting "2 + 2 = 4" into PFWS:
 "2 + 2 = 4" in PFWS is 1'[]'+'[]'1'[]'='[]'2   (rule 1)
 ```
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 (To be continued)
 
 
