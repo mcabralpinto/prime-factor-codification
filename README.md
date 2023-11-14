@@ -36,8 +36,8 @@ Turning 342 into PFWS:
 ```
 Turning "g" into PFWS:
 
-1. g is the seventh letter in the alphabet. 7 is the fourth prime number, and as such its number in PFWS is 1'0'0'0 -> 1'(1'0)
-2. 1'(1'0) has three digits, therefore it should be padded once: 0'1'(1'0)
+1. g is the seventh letter in the alphabet. 7 is the fourth prime number, and as such its PFWS number is 1'0'0'0 -> 1'(1'0).
+2. 1'(1'0) has three digits, therefore it should be padded once: 0'1'(1'0).
 
 "g" in PFWS is 0'1'(1'0).
 ```
