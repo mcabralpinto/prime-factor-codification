@@ -6,12 +6,12 @@ A converter and translator for the Prime Factor Writing System (or PFWS), a code
 
 The essence of PFWS is that each alphanumerical character (digit or letter) is to be shown as its equivalent non-ambiguous representation based on its prime factors. As such, it operates under the following ruleset:
 
-- **Codifying Numbers:**
+### Codifying Numbers:
 
-    1. Decompose the number in prime factors;
-    2. Count how many times every existing prime factor up until the highest appears in the decomposition;
-    3. Sort the counts (highest factor -> lowest factor) and separate them with a single prime character `'`.
-    4. For every group of *n* consecutive 0s, replace it with *n* in PFWS enclosed by parenthesis `( ... )`.
+1. Decompose the number in prime factors;
+2. Count how many times every existing prime factor up until the highest appears in the decomposition;
+3. Sort the counts (highest factor -> lowest factor) and separate them with a single prime character `'`.
+4. For every group of *n* consecutive 0s, replace it with *n* in PFWS enclosed by parenthesis `( ... )`.
 
 ```
 Converting 342 into PFWS:
@@ -28,10 +28,10 @@ Converting 342 into PFWS:
 
 > **Note 2**: 0 was a tricky number to represent! `()` was the representation I wound up going with, not only because it looks like a 0, but also because the parenthesis represent a sequence of 0s.
 
-- **Codifying Letters:**
+### Codifying Letters:
 
-    1. Identify its PFWS number (letters a-z correspond to decimal numbers 1-26);
-    2. If it has less than four digits, pad it with 0s until the slot for the fourth prime number (7) is filled.
+1. Identify its PFWS number (letters a-z correspond to decimal numbers 1-26);
+2. If it has less than four digits, pad it with 0s until the slot for the fourth prime number (7) is filled.
 
 ```
 Converting "g" into PFWS:
@@ -42,7 +42,7 @@ Converting "g" into PFWS:
 "g" in PFWS is 0'1'(1'0).
 ```
 
-  It would be unpractical to find a letter's code every time it is to be used. Luckily, `pfws.py` pre-stores every letter's code in a dictionary to   further optimize the code:
+It would be unpractical to find a letter's code every time it is to be used. Luckily, `pfws.py` pre-stores every letter's code in a dictionary to further optimize the code:
 
 ```python
 letters : Dict[str, str] = {"a": "0'0'0'0", "b": "0'0'0'1", "c": "0'0'1'0", "d": "0'0'0'2", "e": "0'0'1'(1)", 
@@ -53,12 +53,12 @@ letters : Dict[str, str] = {"a": "0'0'0'0", "b": "0'0'0'1", "c": "0'0'1'0", "d":
                             "z": "0'1'(2)'1"}
 ```
 
-- **Codifying Expressions:**
+### Codifying Expressions:
 
-    1. PFWS letters, numbers and symbols are connected by single prime characters. If a letter is following a non-letter character or if a number is following a letter, it should include an extra single prime to avoid ambiguity between letters and numbers.
-    2. In the same way numbers can be simplified, groups of *n* consecutive 0s formed by letters should be replaced with *n* in PFWS enclosed by square brackets `[ ... ]`.
-    3. Whitespace " " is awarded a special character `[]` in the PFWS system, as a symbolic representation of an empty character.
-    4. Every other character has the same representation as they would in the regular writing system.
+1. PFWS letters, numbers and symbols are connected by single prime characters. If a letter is following a non-letter character or if a number is following a letter, it should include an extra single prime to avoid ambiguity between letters and numbers.
+2. In the same way numbers can be simplified, groups of *n* consecutive 0s formed by letters should be replaced with *n* in PFWS enclosed by square brackets `[ ... ]`.
+3. Whitespace " " is awarded a special character `[]` in the PFWS system, as a symbolic representation of an empty character.
+4. Every other character has the same representation as they would in the regular writing system.
 
 ```
 Converting "pf20 ws23" into PFWS:
@@ -89,7 +89,7 @@ Converting "2 + 2 = 4" into PFWS:
 "2 + 2 = 4" in PFWS is 1'[]'+'[]'1'[]'='[]'2   (rule 1)
 ```
 
-  (To be continued)
+(To be continued)
 
 
 
