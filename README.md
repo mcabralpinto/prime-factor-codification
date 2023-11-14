@@ -55,24 +55,37 @@ letters : Dict[str, str] = {"a": "0'0'0'0", "b": "0'0'0'1", "c": "0'0'1'0", "d":
 
 - **Codifying Expressions:**
 
-    1. PFWS letters, numbers and symbols are connected by single prime characters. If a letter is following a non-letter character, it should include an extra single prime to avoid ambiguity between letters and numbers.
+    1. PFWS letters, numbers and symbols are connected by single prime characters. If a letter is following a non-letter character or if a number is following a letter, it should include an extra single prime to avoid ambiguity between letters and numbers.
     2. In the same way numbers can be simplified, groups of *n* consecutive 0s formed by letters should be replaced with *n* in PFWS enclosed by square brackets.
     3. Whitespace " " is awarded a special character "[]" in the PFWS system, as a symbolic representation of an empty character.
     4. Every other character has the same representation as they would in the regular writing system.
 
 ```
-Turning "pf 20 ws23" into PFWS:
+Turning "pf20 ws23" into PFWS:
 
 ---SYMBOL CONVERSION---
 "p" -> 0'0'0'4
 "f" -> 0'0'1'1
-" " -> [] (rule 3)
 "20" -> 1'0'2
+" " -> [] (rule 3)
 "w" -> 0'0'1'(3)
 "s" -> 1'(1'(1'0))
 "23" -> 1'(3)
 
-"pf 20 ws23" in PFWS is '0'0'0'4'0'0'1'1'[]'1'0'2
+"pf20 ws23" in PFWS is '0'0'0'4'0'0'1'1''1'0'2'[]''0'0'1'(3)'1'(1'(1'0))''1'(3) (rules 1 and 2)
+```
+
+```
+Turning "2 + 2 = 4" into PFWS:
+
+---SYMBOL CONVERSION---
+"2" -> 1
+" " -> [] (rule 3)
+"+" -> + (rule 4)
+"=" -> = (rule 4)
+"4" -> 2
+
+"2 + 2 = 4" in PFWS is 1'[]'+'[]'1'[]'='[]'2 (rule 1)
 ```
 
   (To be continued)
