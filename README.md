@@ -1,6 +1,13 @@
 # Prime Factor Codification
 
-A converter and translator for the Prime Factor Writing System (or PFWS), a code I came up with for fun.
+A converter and translator for the Prime Factor Codification (or PFC), a code I came up with for fun.
+
+## pfws.py
+
+The Python file in which the program is coded. Upon running it, the user will be greeted with a console menu allowing the user to:
+   1. Encode a message;
+   2. Decode a message;
+   3. End the program.
 
 ## How It Works
 
@@ -10,7 +17,7 @@ The essence of PFWS is that each alphanumerical character (digit or letter) is t
 
 1. Decompose the number in prime factors;
 2. Count how many times every existing prime factor up until the highest appears in the decomposition;
-3. Sort the counts (highest factor -> lowest factor) and separate them with a single prime character `'`.
+3. Sort the counts (highest factor -> lowest factor) and separate them with a single prime character `'`;
 4. For every group of *n* consecutive 0s, replace it with *n* in PFWS enclosed by parenthesis `( ... )`.
 
 ```
@@ -24,7 +31,7 @@ Converting 342 into PFWS:
 
 342 in PFWS is 1'(1'(1))'2'1.
 ```
-> **Note**: The single prime character separation is a way to avoid ambiguity. Without it, the number 10, coded in PFWS, could be interpreted as 3¹ * 2⁰ = 3 or 2¹⁰ = 1024!
+> **Note**: The single prime character separation is a way to avoid ambiguity. Without it, the number 10, encoded in PFWS, could be interpreted as 3¹ * 2⁰ = 3 or 2¹⁰ = 1024!
 
 > **Note 2**: 0 was a tricky number to represent! `()` was the representation I wound up going with, not only because it looks like a 0, but also because the parenthesis represent a sequence of 0s.
 
@@ -42,7 +49,7 @@ Converting "g" into PFWS:
 "g" in PFWS is 0'1'(1'0).
 ```
 
-It would be unpractical to find a letter's code every time it is to be used. Luckily, `pfws.py` pre-stores every letter's code in a dictionary to further optimize the code:
+It would be unpractical to find a letter's code every time it is to be used. Luckily, `pfws.py` pre-stores every letter's specific code in a dictionary to further optimize the program:
 
 ```python
 letters : Dict[str, str] = {"a": "0'0'0'0", "b": "0'0'0'1", "c": "0'0'1'0", "d": "0'0'0'2", "e": "0'0'1'(1)", 
