@@ -17,7 +17,7 @@ The essence of PFWS is that each alphanumerical character (digit or letter) is t
 
 1. Decompose the number in prime factors;
 2. Count how many times every existing prime factor up until the highest appears in the decomposition;
-3. Sort the counts (highest factor -> lowest factor) and separate them with a single prime character `'`;
+3. Sort the counts (highest factor -> lowest factor) and separate them with a single quote character `'`;
 4. For every group of *n* consecutive 0s, replace it with *n* in PFWS enclosed by parenthesis `( ... )`.
 
 ```
@@ -31,7 +31,7 @@ Converting 342 into PFWS:
 
 342 in PFWS is 1'(1'(1))'2'1.
 ```
-> **Note**: The single prime character separation is a way to avoid ambiguity. Without it, the number 10, encoded in PFWS, could be interpreted as 3¹ * 2⁰ = 3 or 2¹⁰ = 1024!
+> **Note**: The single quote character separation is a way to avoid ambiguity. Without it, the number 10, encoded in PFWS, could be interpreted as 3¹ * 2⁰ = 3 or 2¹⁰ = 1024!
 
 > **Note 2**: 0 was a tricky number to represent! `()` was the representation I wound up going with, not only because it looks like a 0, but also because the parenthesis represent a sequence of 0s.
 
@@ -62,7 +62,7 @@ letters : Dict[str, str] = {"a": "0'0'0'0", "b": "0'0'0'1", "c": "0'0'1'0", "d":
 
 ### Encoding Expressions
 
-1. PFWS letters, numbers and symbols are connected by single prime characters. If a letter is following a non-letter character or if a number is following a letter, it should include an extra single prime to avoid ambiguity between letters and numbers.
+1. PFWS letters, numbers and symbols are connected by single quote characters. If a letter is following a non-letter character or if a number is following a letter, it should include an extra single quote to avoid ambiguity between letters and numbers.
 2. In the same way numbers can be simplified, groups of *n* consecutive 0s formed by letters should be replaced with *n* in PFWS enclosed by square brackets `[ ... ]`.
 3. Whitespace is awarded a special character `[]` in the PFWS system, as a symbolic representation of an empty character.
 4. Every other character has the same representation as they would in the regular writing system.
